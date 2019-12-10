@@ -1,9 +1,17 @@
 import React from "react";
+import { getInitialValue } from "./mockupAPI";
 
 export default class Counter extends React.Component {
   state = {
-    number: 35
+    number: null
   };
+
+  async componentDidMount() {
+    const response = await getInitialValue();
+    this.setState({
+      number: response.data.initialValue
+    });
+  }
 
   decrement = () => {
     this.setState({
@@ -21,7 +29,7 @@ export default class Counter extends React.Component {
     const { number } = this.state;
     return (
       <>
-        <h2>Stage A</h2>
+        <h2>Stage B</h2>
         <button onClick={this.decrement}>-</button>
         <span>{number}</span>
         <button onClick={this.increment}>+</button>
