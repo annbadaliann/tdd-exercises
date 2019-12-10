@@ -25,15 +25,21 @@ export default class Counter extends React.Component {
     });
   };
 
+  generateRandomNum = () => {
+    this.setState({
+      number: Math.floor(Math.random() * 1000)
+    });
+  };
+
   render() {
     const { number } = this.state;
     return (
-      <>
-        <h2>Stage B</h2>
+      <div>
         <button onClick={this.decrement}>-</button>
         <span>{number}</span>
         <button onClick={this.increment}>+</button>
-      </>
+        <button onClick={this.generateRandomNum}>Generate random number</button>
+      </div>
     );
   }
 }
